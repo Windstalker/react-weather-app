@@ -14,7 +14,7 @@ class App extends Component {
     try {
       result = await request.get('/weather', {
         params: {
-          q: 'Kharkiv'
+          q: 'Kharkiv',
         }
       })
       console.log(result)
