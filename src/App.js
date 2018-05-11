@@ -2,7 +2,23 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import request from './api/request'
+
 class App extends Component {
+  componentDidMount() {
+    this.fetchWeather()
+  }
+
+  async fetchWeather() {
+    let result
+    try {
+      result = await request.get('/weather').query({ q: 'Kharkiv' })
+      console.log(result)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   render() {
     return (
       <div className="App">
