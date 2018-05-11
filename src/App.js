@@ -12,7 +12,11 @@ class App extends Component {
   async fetchWeather() {
     let result
     try {
-      result = await request.get('/weather').query({ q: 'Kharkiv' })
+      result = await request.get('/weather', {
+        params: {
+          q: 'Kharkiv'
+        }
+      })
       console.log(result)
     } catch (e) {
       console.error(e)
