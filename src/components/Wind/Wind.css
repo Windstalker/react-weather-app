@@ -1,0 +1,48 @@
+.wind-container {
+    color: #fff;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.wind-direction {
+    display: flex;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.wind-direction.medium {
+    width: 50px;
+    height: 50px;
+}
+
+.wind-direction.small {
+    width: 25px;
+    height: 25px;
+}
+
+.wind-arrow {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.wind-arrow:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+    background: url('../../icons/static/right-long-arrow.svg');
+    background-position: center center; 
+    background-size: contain;
+}

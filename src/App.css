@@ -1,28 +1,30 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.bg-night {
+    background: linear-gradient(to bottom, #171b29, #31363a);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.bg-clear {
+    background: linear-gradient(to bottom, #a2cef7, #79abee);
 }
 
-.App-title {
-  font-size: 1.5em;
+.bg-clouds {
+    background: linear-gradient(to bottom, #8aafd8, #448ce9);
 }
 
-.App-intro {
-  font-size: large;
+.bg-rain {
+    background: linear-gradient(to bottom, #6987aa, #4f637e);
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.bg-snow {
+    background: linear-gradient(to bottom, #b9d1ec, #a6c2e7);
+}
+
+.bg-mist {
+    background: linear-gradient(to bottom, #abb4be, #c6ced8);
 }
