@@ -1,39 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { observer, inject } from 'mobx-react'
 
+import Panel from './components/Panel/Panel'
+import ErrorPanel from './components/ErrorPanel/ErrorPanel'
+import LocationForm from './containers/LocationForm/LocationForm'
 import CurrentWeather from './containers/CurrentWeather/CurrentWeather'
 
 import './App.css';
 
-import request from './api/request'
-
+@inject('store')
+@observer
 class App extends Component {
-  constructor (props, context) {
-    super(props, context)
-    this.state = {
-      weatherData: undefined
-    }
-  }
-
-  componentDidMount() {
-    this.fetchWeather()
-  }
-
-  async fetchWeather() {
-    let result
-    try {
-      result = await request.get('/weather', {
-        params: {
-          q: 'Kharkiv',
-        }
-      })
-      console.log(result)
-      this.setState((state) => {
-        return {...state, weatherData: result.data}
-      })
-    } catch (e) {
-      console.error(e)
-    }
+  static propTypes = {
+    store: PropTypes.shape({
+      error: PropTypes.object,
+      currentWeather: PropTypes.shape({
+        icon: PropTypes.string
+      }),
+      isCurrentWeatherEmpty: PropTypes.bool,
+      loading: PropTypes.bool
+    }).isRequired,
   }
 
   getWeatherBackground(weather) {
@@ -61,13 +49,34 @@ class App extends Component {
     }
   }
 
+  renderWeatherContainers() {
+    return [
+      <CurrentWeather key='current-weather'/>
+    ]
+  }
+
+  renderLoading() {
+    return <Panel><strong>Loading...</strong></Panel>
+  }
+
+  renderError() {
+    return <ErrorPanel error={this.props.store.error} />
+  }
+
   render() {
-    const { weatherData } = this.state
-    const weather = (weatherData && weatherData.weather && weatherData.weather[0]) || {}
+    const { store } = this.props
+    
+    const className = classnames(
+      "App", 
+      !store.isCurrentWeatherEmpty && this.getWeatherBackground(store.currentWeather)
+    )
 
     return (
-      <div className={classnames("App", this.getWeatherBackground(weather))}>
-        <CurrentWeather data={weatherData} />
+      <div className={className}>
+        <LocationForm />
+        {store.error && this.renderError()}
+        {store.loading && this.renderLoading()}
+        {store.isCurrentWeatherReady && this.renderWeatherContainers()}
       </div>
     );
   }

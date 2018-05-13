@@ -7,6 +7,8 @@
   background-color: #171b29;
   transition: background-color 1s ease-in;
   overflow: auto;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .bg-night {

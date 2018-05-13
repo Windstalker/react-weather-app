@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { configure } from 'mobx'
+
 import './index.css';
-import App from './App';
+import Root from './Root';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+configure({ enforceActions: true });
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();

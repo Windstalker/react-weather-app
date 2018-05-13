@@ -1,0 +1,15 @@
+.locationInput {
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    padding: 0 5px;
+    height: 45px;
+    font-size: 24px;
+    font-style: italic;
+}
+.locationInput:disabled {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+.locationInput:focus {
+    outline: 0;
+}
