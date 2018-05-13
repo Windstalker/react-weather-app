@@ -1,0 +1,12 @@
+.CurrentWeather {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.CurrentWeather > .additionalData {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}

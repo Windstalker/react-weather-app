@@ -23,7 +23,7 @@ export default class Wind extends React.PureComponent {
             transform: `rotate(${deg}deg)`
         }
 
-        return <div className='wind-container'>
+        return <div className='wind-container' title={`Wind: speed ${speed} m/s; ${deg}deg`}>
             <span className='wind-speed'>{speed} m/s</span>
             <div className={classnames('wind-direction', size)}>
                 <span className='wind-arrow' style={style} />

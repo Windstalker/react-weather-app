@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames'
 
-import Wind from './components/Wind/Wind'
-import Panel from './components/Panel/Panel'
+import CurrentWeather from './containers/CurrentWeather/CurrentWeather'
 
 import './App.css';
 
@@ -12,7 +11,7 @@ class App extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      weatherData: {}
+      weatherData: undefined
     }
   }
 
@@ -38,15 +37,6 @@ class App extends Component {
   }
 
   getWeatherBackground(weather) {
-    // 01  clear sky
-    // 02  few clouds
-    // 03  scattered clouds
-    // 04  broken clouds
-    // 09  shower rain
-    // 10  rain
-    // 11  thunderstorm
-    // 13  snow
-    // 50  mist
     const iconCode= weather.icon || ''
     const isNight = iconCode.slice(-1) === 'n'
 
@@ -67,20 +57,17 @@ class App extends Component {
       case '50':
         return 'bg-mist'
       default:
-        return 'bg-clear'
+        return ''
     }
   }
 
   render() {
     const { weatherData } = this.state
-    const wind = weatherData.wind || {}
-    const weather = (weatherData.weather && weatherData.weather[0]) || {}
+    const weather = (weatherData && weatherData.weather && weatherData.weather[0]) || {}
 
     return (
       <div className={classnames("App", this.getWeatherBackground(weather))}>
-        <Panel>
-          <Wind {...wind}/>
-        </Panel>
+        <CurrentWeather data={weatherData} />
       </div>
     );
   }

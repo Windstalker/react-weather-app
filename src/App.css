@@ -3,28 +3,32 @@
   font-family: 'Roboto', sans-serif;
   width: 100%;
   height: 100%;
+  color: #fff;
+  background-color: #171b29;
+  transition: background-color 1s ease-in;
+  overflow: auto;
 }
 
 .bg-night {
-    background: linear-gradient(to bottom, #171b29, #31363a);
+    background-color: #171b29;
 }
 
 .bg-clear {
-    background: linear-gradient(to bottom, #a2cef7, #79abee);
+    background-color: #a2cef7;    
 }
 
 .bg-clouds {
-    background: linear-gradient(to bottom, #8aafd8, #448ce9);
+    background-color: #8aafd8;    
 }
 
 .bg-rain {
-    background: linear-gradient(to bottom, #6987aa, #4f637e);
+    background-color: #6987aa;    
 }
 
 .bg-snow {
-    background: linear-gradient(to bottom, #b9d1ec, #a6c2e7);
+    background-color: #b9d1ec;    
 }
 
 .bg-mist {
-    background: linear-gradient(to bottom, #abb4be, #c6ced8);
+    background-color: #abb4be;    
 }
