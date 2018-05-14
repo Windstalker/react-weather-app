@@ -1,1 +1,1 @@
-export { API_KEY } from "./apiKey"
+export { API_KEY } from './apiKey'

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { observer, inject } from 'mobx-react'
@@ -7,8 +7,9 @@ import Panel from './components/Panel/Panel'
 import ErrorPanel from './components/ErrorPanel/ErrorPanel'
 import LocationForm from './containers/LocationForm/LocationForm'
 import CurrentWeather from './containers/CurrentWeather/CurrentWeather'
+import Forecast from './containers/Forecast/Forecast'
 
-import './App.css';
+import './App.css'
 
 @inject('store')
 @observer
@@ -19,7 +20,8 @@ class App extends Component {
       currentWeather: PropTypes.shape({
         icon: PropTypes.string
       }),
-      isCurrentWeatherEmpty: PropTypes.bool,
+      isCurrentWeatherReady: PropTypes.bool,
+      isForecastWeatherReady: PropTypes.bool,
       loading: PropTypes.bool
     }).isRequired,
   }
@@ -31,27 +33,31 @@ class App extends Component {
     if (isNight) return 'bg-night'
 
     switch (iconCode.slice(0, -1)) {
-      case '01':
-        return 'bg-clear'
-      case '02':
-      case '03':
-        return 'bg-clouds'
-      case '04':
-      case '10':
-      case '11':
-        return 'bg-rain'
-      case '13':
-        return 'bg-snow'
-      case '50':
-        return 'bg-mist'
-      default:
-        return ''
+    case '01':
+      return 'bg-clear'
+    case '02':
+    case '03':
+      return 'bg-clouds'
+    case '04':
+    case '09':
+    case '10':
+    case '11':
+      return 'bg-rain'
+    case '13':
+      return 'bg-snow'
+    case '50':
+      return 'bg-mist'
+    default:
+      return ''
     }
   }
 
   renderWeatherContainers() {
+    const { store } = this.props
+
     return [
-      <CurrentWeather key='current-weather'/>
+      store.isCurrentWeatherReady && <CurrentWeather key='current-weather'/>,
+      store.isForecastWeatherReady && <Forecast key='forecast' />
     ]
   }
 
@@ -65,9 +71,9 @@ class App extends Component {
 
   render() {
     const { store } = this.props
-    
+
     const className = classnames(
-      "App", 
+      'App',
       !store.isCurrentWeatherEmpty && this.getWeatherBackground(store.currentWeather)
     )
 
@@ -76,10 +82,10 @@ class App extends Component {
         <LocationForm />
         {store.error && this.renderError()}
         {store.loading && this.renderLoading()}
-        {store.isCurrentWeatherReady && this.renderWeatherContainers()}
+        {this.renderWeatherContainers()}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

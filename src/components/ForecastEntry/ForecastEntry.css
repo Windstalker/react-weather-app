@@ -1,0 +1,31 @@
+.forecastEntry {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.forecast-date {
+  flex: 1;
+}
+
+.forecast-icon {
+  width: 64px;
+}
+
+.forecast-temp {
+  flex: 1;
+}
+
+.forecast-wind {
+  flex: 1;
+  min-width: 110px;
+  max-width: 130px;
+}
+
+.forecast-humidity {
+  flex: 1;
+}
+
+.forecast-pressure {
+  flex: 1;
+}

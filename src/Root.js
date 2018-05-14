@@ -5,11 +5,11 @@ import App from './App'
 import AppStore from './stores/AppStore'
 
 const stores = {
-    store: new AppStore()
+  store: new AppStore()
 }
 
 export default function Root() {
-    return <Provider {...stores}>
-        <App />
-    </Provider>
+  return <Provider {...stores}>
+    <App />
+  </Provider>
 }

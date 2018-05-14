@@ -2,35 +2,62 @@
   text-align: center;
   font-family: 'Roboto', sans-serif;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  min-width: 512px;
   color: #fff;
-  background-color: #171b29;
+  background-color: #a2cef7;
   transition: background-color 1s ease-in;
   overflow: auto;
   padding: 0 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.App > .LocationForm {
+  align-self: stretch;
+}
+
+.App > .CurrentWeather {
+  width: 60%;
+}
+
+.App > .Forecast {
+  width: 75%;
 }
 
 .bg-night {
-    background-color: #171b29;
+  background-color: #171b29;
 }
 
 .bg-clear {
-    background-color: #a2cef7;    
+  background-color: #a2cef7;
 }
 
 .bg-clouds {
-    background-color: #8aafd8;    
+  background-color: #8aafd8;
 }
 
 .bg-rain {
-    background-color: #6987aa;    
+  background-color: #6987aa;
 }
 
 .bg-snow {
-    background-color: #b9d1ec;    
+  background-color: #b9d1ec;
 }
 
 .bg-mist {
-    background-color: #abb4be;    
+  background-color: #abb4be;
+}
+
+@media screen and (max-width: 768px) {
+  .App > .CurrentWeather {
+    width: 80%;
+  }
+
+  .App > .Forecast {
+    align-self: stretch;
+    width: initial;
+  }
 }

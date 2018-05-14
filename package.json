@@ -15,6 +15,7 @@
     "chalk": "1.1.3",
     "classnames": "^2.2.5",
     "css-loader": "0.28.7",
+    "date-fns": "^1.29.0",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
     "eslint": "4.10.0",
@@ -43,6 +44,7 @@
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
+    "uuid-js": "^0.7.5",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
     "webpack-manifest-plugin": "1.3.2",
@@ -51,12 +53,19 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "lint-js": "eslint --ext .js,.jsx src/",
+    "lint-js:fix": "eslint --fix --ext .js,.jsx src/",
+    "lint-css": "stylelint ./src/**/*.css",
+    "lint-css:fix": "stylelint ./src/**/*.css --fix"
   },
   "devDependencies": {
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "enzyme": "^3.3.0"
+    "enzyme": "^3.3.0",
+    "postcss-safe-parser": "^3.0.1",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -102,6 +111,44 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "no-console": [
+        "warn"
+      ],
+      "no-debugger": [
+        "error"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "block-spacing": [
+        "error",
+        "always"
+      ],
+      "no-trailing-spaces": [
+        "error"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "jsx-quotes": [
+        "warn",
+        "prefer-single"
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   }
 }

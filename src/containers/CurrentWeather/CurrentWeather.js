@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { observer, inject } from 'mobx-react'
 
@@ -16,45 +16,45 @@ import './CurrentWeather.css'
 @observer
 class CurrentWeather extends Component {
     static propTypes = {
-        store: PropTypes.shape({
-            displayedLocation: PropTypes.string,
-            currentWeather: PropTypes.shape({
-                label: PropTypes.string,
-                description: PropTypes.string, 
-                icon: PropTypes.string,
-                temp: PropTypes.number,
-                humidity: PropTypes.number,
-                pressure: PropTypes.number,
-                wind: PropTypes.shape({
-                    deg: PropTypes.number,
-                    speed: PropTypes.number
-                }).isRequired,
-            }).isRequired,
+      store: PropTypes.shape({
+        displayedLocation: PropTypes.string,
+        currentWeather: PropTypes.shape({
+          label: PropTypes.string,
+          description: PropTypes.string,
+          icon: PropTypes.string,
+          temp: PropTypes.number,
+          humidity: PropTypes.number,
+          pressure: PropTypes.number,
+          wind: PropTypes.shape({
+            deg: PropTypes.number,
+            speed: PropTypes.number
+          }).isRequired,
         }).isRequired,
-        className: PropTypes.string
+      }).isRequired,
+      className: PropTypes.string
     }
 
     static defaultProps = {
-        className: ''
+      className: ''
     }
 
     render() {
-        const { store, className } = this.props
-        const { wind, humidity, pressure, temp, icon, description } = store.currentWeather
-        
-        return (
-            <Panel className={classnames('CurrentWeather', className)}>
-                <strong className="cityName">{store.displayedLocation}</strong>
-                <WeatherIcon icon={icon} description={description} width={128} height={128} />
-                <Temperature value={temp} />
-                <div className="additionalData">
-                    <p>Humidity: <Humidity value={humidity} /></p>
-                    <p>Pressure: <Pressure value={pressure} /></p>
-                    <Wind {...wind} />
-                </div>
-            </Panel>
-        );
+      const { store, className } = this.props
+      const { wind, humidity, pressure, temp, icon, description } = store.currentWeather
+
+      return (
+        <Panel className={classnames('CurrentWeather', className)}>
+          <strong className='cityName'>{store.displayedLocation}</strong>
+          <WeatherIcon icon={icon} description={description} width={128} height={128} />
+          <Temperature value={temp} />
+          <div className='additionalData'>
+            <p>Humidity: <Humidity value={humidity} /></p>
+            <p>Pressure: <Pressure value={pressure} /></p>
+            <Wind {...wind} />
+          </div>
+        </Panel>
+      )
     }
 }
 
-export default CurrentWeather;
+export default CurrentWeather

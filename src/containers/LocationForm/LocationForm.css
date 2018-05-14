@@ -1,5 +1,5 @@
-.LocationForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.LocationForm form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
